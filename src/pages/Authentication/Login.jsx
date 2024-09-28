@@ -6,7 +6,7 @@ import { AuthContext } from "../../provider/AuthProvider"
 import toast from "react-hot-toast"
 const Login = () => {
     const navigate = useNavigate()
-    const {signIn,  signInWithGoogle} =useContext(AuthContext);
+    const {signIn,   signInWithGoogle} =useContext(AuthContext);
 
     // google signin
     const handleGoogleSignIn = async () =>{
