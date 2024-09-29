@@ -2,9 +2,19 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import JobCard from './JobCard';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 // eslint-disable-next-line react/prop-types
-const TabCategories = ({jobs}) => {
+const TabCategories = () => {
+    const [jobs , setJobs] = useState([]);
+    useEffect(()=>{
+        const getData = async ()=>{
+            const {data} = await axios('http://localhost:9000/jobs')
+            setJobs(data)
+        }
+        getData()
+    }, [])
     console.log(jobs)
     return (
         <Tabs>
