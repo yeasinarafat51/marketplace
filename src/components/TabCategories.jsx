@@ -1,8 +1,11 @@
+/* eslint-disable react/prop-types */
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import JobCard from './JobCard';
 
-const TabCategories = () => {
+// eslint-disable-next-line react/prop-types
+const TabCategories = ({jobs}) => {
+    console.log(jobs)
     return (
         <Tabs>
       <div className='container px-6 py-10'>
@@ -24,13 +27,31 @@ const TabCategories = () => {
        </div>
     
         <TabPanel>
-          <JobCard/>
+         <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+            {
+                jobs.filter(j => j.category === 'Web Development').map(job =>(
+                    <JobCard key={job._id} job={job}/>
+                ))
+            }
+         </div>
         </TabPanel>
         <TabPanel>
-          <h2>Any content 2</h2>
+        <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+            {
+                jobs.filter(j => j.category === 'Graphics Design').map(job =>(
+                    <JobCard key={job._id} job={job}/>
+                ))
+            }
+         </div>
         </TabPanel>
         <TabPanel>
-          <h2>Any content 3</h2>
+        <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+            {
+                jobs.filter(j => j.category === 'Digital Marketing').map(job =>(
+                    <JobCard key={job._id} job={job}/>
+                ))
+            }
+         </div>
         </TabPanel>
       </div>
       </Tabs>

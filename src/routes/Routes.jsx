@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
 import Home from "../pages/Home";
@@ -10,7 +11,8 @@ const router = createBrowserRouter([
         element:<Main/>,
         children:[{
             index:true,
-            element:<Home/>
+            element:<Home/>,
+            loader: () => fetch('http://localhost:9000/jobs'),
         },
         {
             path:'/login',
