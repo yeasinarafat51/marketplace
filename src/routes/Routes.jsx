@@ -13,7 +13,7 @@ const router = createBrowserRouter([
         children:[{
             index:true,
             element:<Home/>,
-            loader: () => fetch('http://localhost:9000/jobs'),
+            
         },
         {
             path:'/login',
@@ -25,7 +25,8 @@ const router = createBrowserRouter([
         },
         {
             path:'/job/:id',
-            element:<JobDetails/>
+            element:<JobDetails/>,
+            loader: ({params}) => fetch(`http://localhost:9000/job/${params.id}`),
         },
     ]
     },
