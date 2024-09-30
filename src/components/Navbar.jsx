@@ -59,7 +59,7 @@ const Navbar = () => {
                 <Link to='/my-bids' className='justify-between'>My Bidss</Link>
               </li>
               <li>
-                <div>Bid Requests</div>
+               
                 <Link to='/bid-requests' className='justify-between'>Bid Requests</Link>
               </li>
               <li className='mt-2'>

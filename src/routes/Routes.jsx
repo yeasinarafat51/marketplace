@@ -6,11 +6,13 @@ import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import JobDetails from "../pages/JobDetails";
 import AddJob from "../pages/AddJob";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path:'/',
         element:<Main/>,
+        errorElement:<ErrorPage/>,
         children:[{
             index:true,
             element:<Home/>,
