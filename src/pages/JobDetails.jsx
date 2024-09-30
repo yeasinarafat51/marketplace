@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom"
 import { AuthContext } from "../provider/AuthProvider"
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
+import axios from "axios";
 
 const JobDetails = () => {
     const [startDate, setStartDate] = useState(new Date());
@@ -42,6 +43,12 @@ const JobDetails = () => {
 
             }
             console.table(bidData)
+            try{
+                const {data} = await axios.post('http://localhost:9000/bid', bidData)
+                console.log(data)
+            } catch (err){
+                console.log(err)
+            }
         }
     return (
       <div className='flex flex-col md:flex-row justify-around gap-5  items-center min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto '>
