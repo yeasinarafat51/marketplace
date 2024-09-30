@@ -1,9 +1,11 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { useLoaderData } from "react-router-dom"
 import { AuthContext } from "../provider/AuthProvider"
+import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 
 const JobDetails = () => {
+    const [startDate, setStartDate] = useState(new Date());
     const {user} = useContext(AuthContext)
     const job = useLoaderData()
     const {
@@ -23,7 +25,7 @@ const JobDetails = () => {
             const bidId = _id
             const price = parseFloat(from.price.value)
             const comment = from.comment.value
-            // const deadline = deadline
+            const deadline = startDate
             const email = user?.email
             // const buyer_email = buyer_email
             const status = 'pending'
@@ -129,7 +131,7 @@ const JobDetails = () => {
               <div className='flex flex-col gap-2 '>
                 <label className='text-gray-700'>Deadline</label>
   
-                {/* Date Picker Input Field */}
+                <DatePicker className="border p-2 rounded-md" selected={startDate} onChange={(date) => setStartDate(date)} />
               </div>
             </div>
   
