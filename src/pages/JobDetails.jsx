@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { useLoaderData } from "react-router-dom"
 import { AuthContext } from "../provider/AuthProvider"
+import DatePicker from "react-datepicker";
 
 const JobDetails = () => {
     const {user} = useContext(AuthContext)
@@ -13,7 +14,33 @@ const JobDetails = () => {
         max_price,
         category,
         deadline,
-        bid_count,}= job || {}
+        bid_count,
+        buyer_email}= job || {}
+
+        const handleFrom = async e =>{
+            e.preventDefault()
+            const from = e.target
+            const bidId = _id
+            const price = parseFloat(from.price.value)
+            const comment = from.comment.value
+            // const deadline = deadline
+            const email = user?.email
+            // const buyer_email = buyer_email
+            const status = 'pending'
+
+            const bidData ={
+                bidId,
+                price,
+                deadline,
+                comment,
+                email,
+                buyer_email,
+                status
+
+
+            }
+            console.table(bidData)
+        }
     return (
       <div className='flex flex-col md:flex-row justify-around gap-5  items-center min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto '>
         {/* Job Details */}
@@ -60,7 +87,7 @@ const JobDetails = () => {
             Place A Bid
           </h2>
   
-          <form>
+          <form onSubmit={ handleFrom}>
             <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
               <div>
                 <label className='text-gray-700 ' htmlFor='price'>
