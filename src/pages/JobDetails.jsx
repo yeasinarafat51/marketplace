@@ -22,8 +22,9 @@ const JobDetails = () => {
         buyer}= job || {}
 
         const handleFrom = async e =>{
+          e.preventDefault()
             if(user?.email === buyer.email) return toast.error('Action not permitted')
-            e.preventDefault()
+            
             const from = e.target
             const bidId = _id
             const price = parseFloat(from.price.value)
