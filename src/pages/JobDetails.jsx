@@ -4,6 +4,7 @@ import { AuthContext } from "../provider/AuthProvider"
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const JobDetails = () => {
     const [startDate, setStartDate] = useState(new Date());
@@ -21,10 +22,12 @@ const JobDetails = () => {
         buyer_email}= job || {}
 
         const handleFrom = async e =>{
+            if(user?.email === buyer_email) return toast.error('Action not permitted')
             e.preventDefault()
             const from = e.target
             const bidId = _id
             const price = parseFloat(from.price.value)
+            if(price < parseFloat(min_price)) return toast.error('offer more or at least equal to minimum price')
             const comment = from.comment.value
             const deadline = startDate
             const email = user?.email
