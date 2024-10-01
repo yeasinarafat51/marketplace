@@ -56,7 +56,7 @@ const Navbar = () => {
               </li>
               <li>
                
-                <Link to='/my-bids' className='justify-between'>My Bidss</Link>
+                <Link to='/my-bids' className='justify-between'>My Bids</Link>
               </li>
               <li>
                

@@ -8,14 +8,11 @@ const MyPostedJobs = () => {
     const {user} = useContext(AuthContext)
 
     const [jobs , setJobs] = useState([]);
-    // useEffect(()=>{
-    //     const getData = async ()=>{
-    //     const {data} = await axios(`http://localhost:9000/jobs/${user?.email}`)
-    //     console.log(data)
-    //     setJobs(data)
-    // }
-    // getData()
-    // }, [user])
+    useEffect(()=>{
+       
+    
+    getData()
+    }, [user])
     const getData = async ()=>{
         const {data} = await axios(`http://localhost:9000/jobs/${user?.email}`)
         console.log(data)

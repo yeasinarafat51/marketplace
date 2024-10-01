@@ -43,7 +43,8 @@ const JobDetails = () => {
                 buyer_email:buyer?.email,
                 email,
                 buyer,
-                status
+                status, 
+                category
 
 
             }
