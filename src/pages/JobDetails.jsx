@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { useLoaderData } from "react-router-dom"
+import { useLoaderData, useNavigate } from "react-router-dom"
 import { AuthContext } from "../provider/AuthProvider"
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
@@ -7,6 +7,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const JobDetails = () => {
+  const navigate = useNavigate()
     const [startDate, setStartDate] = useState(new Date());
     const {user} = useContext(AuthContext)
     const job = useLoaderData()
@@ -52,6 +53,8 @@ const JobDetails = () => {
             try{
                 const {data} = await axios.post('http://localhost:9000/bid', bidData)
                 console.log(data)
+                toast.success('Bid placed Sucessfull')
+                navigate('/my-bids')
             } catch (err){
                 console.log(err)
             }
@@ -82,7 +85,7 @@ const JobDetails = () => {
             </p>
             <div className='flex items-center gap-5'>
               <div>
-                <p className='mt-2 text-sm  text-gray-600 '>Name: Jhankar Vai.</p>
+                <p className='mt-2 text-sm  text-gray-600 '>Name: {buyer.name}</p>
                 <p className='mt-2 text-sm  text-gray-600 '>
                   Email: {buyer?.email}
                 </p>

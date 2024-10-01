@@ -11,7 +11,7 @@ const BidRequests = () => {
     //     getData()
     //     }, [user])
         const getData = async ()=>{
-            const {data} = await axios(`http://localhost:9000/bir/${user?.email}`)
+            const {data} = await axios(`http://localhost:9000/bid-requests/${user?.email}`)
             console.log(data)
             setBids(data)
         }
