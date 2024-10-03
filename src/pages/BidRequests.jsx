@@ -8,7 +8,7 @@ const BidRequests = () => {
     // useEffect(()=>{
        
     
-    //     getData()
+    //     
     //     }, [user])
         const getData = async ()=>{
             const {data} = await axios(`http://localhost:9000/bid-requests/${user?.email}`)
