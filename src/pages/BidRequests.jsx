@@ -186,9 +186,9 @@ const BidRequests = () => {
                           </button>
                           {/* Reject Button */}
                           <button
-                            // onClick={() =>
-                            //   handleStatus(bid._id, bid.status, 'Rejected')
-                            // }
+                            onClick={() =>
+                              handleStatus(bid._id, bid.status, 'Rejected')
+                            }
                             disabled={bid.status === 'Complete'}
                             className='disabled:cursor-not-allowed text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none'
                           >
