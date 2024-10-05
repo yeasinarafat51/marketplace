@@ -5,10 +5,12 @@ const BidRequests = () => {
     const {user} = useContext(AuthContext)
     const [bids, setBids] = useState([])
 
+   
+
     // useEffect(()=>{
        
     
-    //     
+    //     getData()
     //     }, [user])
         const getData = async ()=>{
             const {data} = await axios(`http://localhost:9000/bid-requests/${user?.email}`)
@@ -17,6 +19,14 @@ const BidRequests = () => {
         }
         getData()
         console.log(bids)
+
+        const handleStatus = async(id, prevStatus, status) =>{
+          if(prevStatus === status) return 
+          const {data} = await axios.patch(`http://localhost:9000/bid/${id}`, {status})
+          console.log(data)
+          getData()
+    
+        }
     return (
       <section className='container px-4 mx-auto pt-12'>
         <div className='flex items-center gap-x-3'>
@@ -153,9 +163,9 @@ const BidRequests = () => {
                         <div className='flex items-center gap-x-6'>
                           {/* Accept Button: In Progress */}
                           <button
-                            // onClick={() =>
-                            //   handleStatus(bid._id, bid.status, 'In Progress')
-                            // }
+                            onClick={() =>
+                              handleStatus(bid._id, bid.status, 'In Progress')
+                            }
                             disabled={bid.status === 'Complete'}
                             className='disabled:cursor-not-allowed text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'
                           >
