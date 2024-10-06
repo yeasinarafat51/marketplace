@@ -20,7 +20,9 @@ const Registration = () => {
     const handleGoogleSignIn = async () =>{
         try{
            const result = await signInWithGoogle()
-           
+           const {data} = await axios.post('http://localhost:9000/jwt', {email:result?.user?.email,},
+            { withCredentials: true})
+           console.log(data)
             toast.success('signin Successful')
             navigate(from, {replace:true})
 
