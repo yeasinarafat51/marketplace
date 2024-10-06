@@ -4,6 +4,7 @@ import logo from '../../assets/images/logo.png'
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
+import axios from "axios";
 const Registration = () => {
     const navigate = useNavigate();
     const location = useLocation()
@@ -18,7 +19,8 @@ const Registration = () => {
 
     const handleGoogleSignIn = async () =>{
         try{
-            await signInWithGoogle()
+           const result = await signInWithGoogle()
+           
             toast.success('signin Successful')
             navigate(from, {replace:true})
 
@@ -42,7 +44,10 @@ const Registration = () => {
         try{
             const result = await createUser(email, pass)
             await updateUserProfile(name, photo)
-            setUser({...user, photoURL:photo, displayName: name})
+            setUser({...result?.user, photoURL:photo, displayName: name})
+            const {data} = await axios.post('http://localhost:9000/jwt', {email:result?.user?.email,},
+              { withCredentials: true})
+             console.log(data)
             console.log(result)
             navigate(from, {replace:true})
             toast.success('signup Succesfull')

@@ -18,7 +18,7 @@ const BidRequests = () => {
             setBids(data)
         }
         getData()
-        console.log(bids)
+        // console.log(bids)
 
         const handleStatus = async(id, prevStatus, status) =>{
           if(prevStatus === status) return 
