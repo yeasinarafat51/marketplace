@@ -14,7 +14,7 @@ const MyPostedJobs = () => {
     getData()
     }, [user])
     const getData = async ()=>{
-        const {data} = await axios(`http://localhost:9000/jobs/${user?.email}`)
+        const {data} = await axios(`http://localhost:9000/jobs/${user?.email}`, {withCredentials:true})
         console.log(data)
         setJobs(data)
     }
