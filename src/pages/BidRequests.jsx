@@ -1,7 +1,8 @@
 import { useContext,  } from "react"
 import { AuthContext } from "../provider/AuthProvider"
 import axios from "axios"
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
+import toast from "react-hot-toast"
 const BidRequests = () => {
     const {user} = useContext(AuthContext)
     
@@ -26,11 +27,26 @@ const BidRequests = () => {
        
         // console.log(bids)
 
+        const {mutateAsync} = useMutation({
+          mutationFn: async ({id, status}) =>{
+            const {data} = await axios.patch(`http://localhost:9000/bid/${id}`, {status})
+            console.log(data)
+
+          },
+          onSuccess: () => {
+            toast.success('Update')
+            refetch()
+
+          },
+        })
+
         const handleStatus = async(id, prevStatus, status) =>{
           if(prevStatus === status) return 
-          const {data} = await axios.patch(`http://localhost:9000/bid/${id}`, {status})
-          console.log(data)
-          getData()
+          await mutateAsync({id, status})
+          
+         
+         
+         
           
     
         }
