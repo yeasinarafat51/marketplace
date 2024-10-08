@@ -1,7 +1,35 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import JobCard from "../../components/JobCard";
 
 
 const AllJobs = () => {
-  const pages = [1, 2, 3, 4, 5]
+    const [itemsPerPage , setItemsPerPage] = useState(1);
+    const [count , setCount] = useState(2);
+    const [jobs , setJobs] = useState([]);
+    useEffect(()=>{
+        const getData = async ()=>{
+            const {data} = await axios('http://localhost:9000/jobs')
+            setJobs(data)
+        }
+        getData()
+    }, [])
+    useEffect(()=>{
+        const getData = async ()=>{
+            const {data} = await axios('http://localhost:9000/job-count')
+            setCount(data)
+        }
+        getData()
+    }, [])
+    // console.log(jobs)
+
+    const numberOfPages = Math.ceil(count / itemsPerPage)
+    const pages = [...Array(numberOfPages).keys()].map(element => element + 1)
+    
+  const handlePaginationButton = value => {
+    console.log(value)
+    // setCurrentPage(value)
+  }
   return (
     <div className='container px-6 py-10 mx-auto min-h-[calc(100vh-306px)] flex flex-col justify-between'>
       <div>
@@ -48,9 +76,9 @@ const AllJobs = () => {
           <button className='btn'>Reset</button>
         </div>
         <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-          {/* {jobs.map(job => (
+          {jobs.map(job => (
             <JobCard key={job._id} job={job} />
-          ))} */}
+          ))}
         </div>
       </div>
 
@@ -79,6 +107,7 @@ const AllJobs = () => {
         {pages.map(btnNum => (
           <button
             key={btnNum}
+            onClick={() => handlePaginationButton(btnNum)}
             className={`hidden px-4 py-2 mx-1 transition-colors duration-300 transform  rounded-md sm:inline hover:bg-blue-500  hover:text-white`}
           >
             {btnNum}
