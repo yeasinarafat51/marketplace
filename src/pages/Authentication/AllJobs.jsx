@@ -1,4 +1,4 @@
-import JobCard from '../components/JobCard'
+
 
 const AllJobs = () => {
   const pages = [1, 2, 3, 4, 5]
