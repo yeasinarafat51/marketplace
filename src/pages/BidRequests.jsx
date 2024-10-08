@@ -7,9 +7,9 @@ const BidRequests = () => {
     const {user} = useContext(AuthContext)
     
 
-    const {data: bids = [], isLoading, isError,error, refetch} = useQuery({
+    const {data: bids = [], isLoading, refetch} = useQuery({
       queryFn: () => getData(),
-      queryKey: ['bids'],
+      queryKey: ['bids', user?.email],
       
     })
    
