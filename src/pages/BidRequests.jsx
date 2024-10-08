@@ -1,10 +1,16 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext,  } from "react"
 import { AuthContext } from "../provider/AuthProvider"
 import axios from "axios"
+import { useQuery } from "@tanstack/react-query"
 const BidRequests = () => {
     const {user} = useContext(AuthContext)
-    const [bids, setBids] = useState([])
+    
 
+    const {data: bids = [], isLoading, isError,error, refetch} = useQuery({
+      queryFn: () => getData(),
+      queryKey: ['bids'],
+      
+    })
    
 
     // useEffect(()=>{
@@ -14,10 +20,10 @@ const BidRequests = () => {
     //     }, [user])
         const getData = async ()=>{
             const {data} = await axios(`http://localhost:9000/bid-requests/${user?.email}`)
-            console.log(data)
-            setBids(data)
+            return data
+            
         }
-        getData()
+       
         // console.log(bids)
 
         const handleStatus = async(id, prevStatus, status) =>{
@@ -25,8 +31,10 @@ const BidRequests = () => {
           const {data} = await axios.patch(`http://localhost:9000/bid/${id}`, {status})
           console.log(data)
           getData()
+          
     
         }
+        if(isLoading) return <p>Data is still loading ....</p>
     return (
       <section className='container px-4 mx-auto pt-12'>
         <div className='flex items-center gap-x-3'>
