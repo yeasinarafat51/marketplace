@@ -89,6 +89,7 @@ const MyBids = () => {
                   <tbody className='bg-white divide-y divide-gray-200 '>
                     {
                         bids.map(bid =>(<tr key={bid._id}>
+                         
                             <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
                               {bid.job_title}
                             </td>

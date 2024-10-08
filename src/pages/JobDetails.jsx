@@ -37,6 +37,7 @@ const JobDetails = () => {
             const status = 'pending'
 
             const bidData ={
+              job_title,
                 bidId,
                 price,
                 deadline,
@@ -56,7 +57,8 @@ const JobDetails = () => {
                 toast.success('Bid placed Sucessfull')
                 navigate('/my-bids')
             } catch (err){
-                console.log(err)
+                toast.success(err.response.data)
+                e.target.reset()
             }
         }
     return (
