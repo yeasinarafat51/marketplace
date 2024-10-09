@@ -64,7 +64,7 @@ const router = createBrowserRouter([
             element:<PrivateRoute><BidRequests/></PrivateRoute>
         },
         {
-            path:'/jobs',
+            path:'/all-jobs',
             element:<AllJobs/>
         },
     ]
