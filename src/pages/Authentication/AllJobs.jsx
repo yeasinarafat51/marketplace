@@ -48,7 +48,7 @@ const AllJobs = () => {
     setSort('');
     setSearch('');
     setSearchText('');
-    setCurrentPage(1);  // Reset to the first page
+    setCurrentPage(1);  // Reset to the first pages
   };
 
   // Handle search submit
