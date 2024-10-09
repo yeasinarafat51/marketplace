@@ -14,7 +14,7 @@ const MyPostedJobs = () => {
     getData()
     }, [user])
     const getData = async ()=>{
-        const {data} = await axios(`http://localhost:9000/jobs/${user?.email}`, {withCredentials:true})
+        const {data} = await axios(`https://market-server-ruby.vercel.app/jobs/${user?.email}`, {withCredentials:true})
         console.log(data)
         setJobs(data)
     }
@@ -22,7 +22,7 @@ const MyPostedJobs = () => {
 
     const handleDelete = async id =>{
         try{
-            const {data} = await axios.delete(`http://localhost:9000/jobes/${id}`)
+            const {data} = await axios.delete(`https://market-server-ruby.vercel.app/jobes/${id}`)
             toast.success('Delete Successful')
             console.log(data)
             

@@ -20,7 +20,7 @@ const BidRequests = () => {
     //     getData()
     //     }, [user])
         const getData = async ()=>{
-            const {data} = await axios(`http://localhost:9000/bid-requests/${user?.email}`)
+            const {data} = await axios(`https://market-server-ruby.vercel.app/bid-requests/${user?.email}`)
             return data
             
         }
@@ -29,7 +29,7 @@ const BidRequests = () => {
 
         const {mutateAsync} = useMutation({
           mutationFn: async ({id, status}) =>{
-            const {data} = await axios.patch(`http://localhost:9000/bid/${id}`, {status})
+            const {data} = await axios.patch(`https://market-server-ruby.vercel.app/bid/${id}`, {status})
             console.log(data)
 
           },
