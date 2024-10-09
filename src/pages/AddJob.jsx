@@ -38,7 +38,7 @@ const AddJob = () => {
             },
         }
         try{
-            const {data} = await axios.post('http://localhost:9000/job', jobData)
+            const {data} = await axios.post('https://market-server-ruby.vercel.app/job', jobData)
             console.log(data)
             toast.success('Job Data Updated Successfully!')
             navigate('/my-posted-jobs')
