@@ -10,7 +10,7 @@ const TabCategories = () => {
     const [jobs , setJobs] = useState([]);
     useEffect(()=>{
         const getData = async ()=>{
-            const {data} = await axios('https://market-server-ruby.vercel.app/jobs')
+            const {data} = await axios('http://localhost:9000/jobs')
             setJobs(data)
         }
         getData()
