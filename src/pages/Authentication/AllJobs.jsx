@@ -37,7 +37,7 @@ const AllJobs = () => {
   const numberOfPages = Math.ceil(count / itemsPerPage);
   const pages = [...Array(numberOfPages).keys()].map((element) => element + 1);
 
-  // Handle pagination
+  // Handle paginations
   const handlePaginationButton = (value) => {
     setCurrentPage(value);
   };
