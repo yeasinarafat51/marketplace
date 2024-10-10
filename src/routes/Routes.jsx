@@ -35,12 +35,12 @@ const router = createBrowserRouter([
         {
             path:'/job/:id',
             element:<PrivateRoute><JobDetails/></PrivateRoute>,
-            loader: ({params}) => fetch(`https://market-server-ruby.vercel.app/job/${params.id}`),
+            loader: ({params}) => fetch(`http://localhost:9000/job/${params.id}`),
         },
         {
             path:'/job/:id',
             element:<JobDetails/>,
-            loader: ({params}) => fetch(`https://market-server-ruby.vercel.app/job/${params.id}`),
+            loader: ({params}) => fetch(`http://localhost:9000/job/${params.id}`),
         },
         {
             path:'/add-job',
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         {
             path:'/update/:id',
             element:<PrivateRoute><UpdateJob/></PrivateRoute>,
-            loader: ({params}) => fetch(`https://market-server-ruby.vercel.app/job/${params.id}`),
+            loader: ({params}) => fetch(`http://localhost:9000/job/${params.id}`),
         },
         {
             path:'/my-posted-jobs',

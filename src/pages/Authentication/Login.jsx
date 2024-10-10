@@ -22,7 +22,7 @@ const Login = () => {
     const handleGoogleSignIn = async () =>{
         try{
            const result = await signInWithGoogle()
-           const {data} = await axios.post('https://market-server-ruby.vercel.app/jwt', {email:result?.user?.email,},
+           const {data} = await axios.post('http://localhost:9000/jwt', {email:result?.user?.email,},
             { withCredentials: true})
            console.log(data)
             toast.success('signin Successful')
@@ -46,7 +46,7 @@ const Login = () => {
         try{
             const result = await signIn(email, pass)
             console.log(result)
-            const {data} = await axios.post('https://market-server-ruby.vercel.app/jwt', {email:result?.user?.email,},
+            const {data} = await axios.post('http://localhost:9000/jwt', {email:result?.user?.email,},
               { withCredentials: true})
              console.log(data)
             navigate(from, {replace:true})

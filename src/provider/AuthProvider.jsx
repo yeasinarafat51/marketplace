@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
 
   const logOut = async () => {
     setLoading(true)
-   const {data} = await axios('https://market-server-ruby.vercel.app/logout', {withCredentials:true})
+   const {data} = await axios('http://localhost:9000/logout', {withCredentials:true})
    console.log(data)
     return signOut(auth)
   }
