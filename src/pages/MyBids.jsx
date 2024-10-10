@@ -20,7 +20,7 @@ const MyBids = () => {
         // console.log(bids)
         const handleStatus = async(id,  status) =>{
           // if(prevStatus === status) return 
-          const {data} = await axios.patch(`http://localhost:9000/bid/${id}`, {status})
+          const {data} = await axios.patch(`https://market-server-ruby.vercel.app/${id}`, {status})
           console.log(data)
           getData()
     
