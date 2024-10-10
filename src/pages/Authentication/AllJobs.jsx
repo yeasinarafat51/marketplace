@@ -16,7 +16,7 @@ const AllJobs = () => {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(
-        `http://localhost:9000/all-jobs?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&sort=${sort}&search=${search}`
+        `https://market-server-ruby.vercel.app/all-jobs?page=${currentPage}&size=${itemsPerPage}&filter=${filter}&sort=${sort}&search=${search}`
       );
       setJobs(data);
     };
@@ -27,7 +27,7 @@ const AllJobs = () => {
   useEffect(() => {
     const getCount = async () => {
       const { data } = await axios.get(
-        `http://localhost:9000/jobs-count?filter=${filter}&search=${search}`
+        `https://market-server-ruby.vercel.app/jobs-count?filter=${filter}&search=${search}`
       );
       setCount(data.count);
     };

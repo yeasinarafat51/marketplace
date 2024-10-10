@@ -52,7 +52,7 @@ const JobDetails = () => {
             }
             // console.table(bidData)
             try{
-                const {data} = await axios.post('https://market-server-ruby.vercel.app', bidData)
+                const {data} = await axios.post('https://market-server-ruby.vercel.app/bid', bidData)
                 console.log(data)
                 toast.success('Bid placed Sucessfull')
                 navigate('/my-bids')

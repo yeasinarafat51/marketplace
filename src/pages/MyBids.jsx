@@ -12,7 +12,7 @@ const MyBids = () => {
         getData()
         }, [user])
         const getData = async ()=>{
-            const {data} = await axios(`http://localhost:9000/my-bids/${user?.email}`)
+            const {data} = await axios(`https://market-server-ruby.vercel.app/my-bids/${user?.email}`)
             console.log(data)
             setBids(data)
         }
@@ -20,7 +20,7 @@ const MyBids = () => {
         // console.log(bids)
         const handleStatus = async(id,  status) =>{
           // if(prevStatus === status) return 
-          const {data} = await axios.patch(`https://market-server-ruby.vercel.app/${id}`, {status})
+          const {data} = await axios.patch(`https://market-server-ruby.vercel.app/bid/${id}`, {status})
           console.log(data)
           getData()
     
