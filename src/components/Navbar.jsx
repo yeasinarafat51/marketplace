@@ -9,21 +9,21 @@ const Navbar = () => {
         <div className='flex-1'>
           <Link to='/' className='flex gap-2 items-center'>
             <img className='w-auto h-7' src={logo} alt='' />
-            <span className='font-bold'>SoloSphere</span>
+            <span className='font-bold'>Marketplace</span>
           </Link>
         </div>
         <div className='flex-none'>
           <ul className='menu menu-horizontal px-1'>
-            <li>
+            <li className='font-medium'>
               <Link to='/'>Home</Link>
-            </li>
-            <li>
+            </li >
+            <li  className='font-medium'>
               <Link to='/all-jobs'>All Jobs</Link>
             </li>
   
            {
             !user && (
-                <li>
+                <li className='font-medium'>
                 <Link to='/login'>Login</Link>
               </li>
             )
@@ -50,22 +50,22 @@ const Navbar = () => {
               tabIndex={0}
               className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
             >
-              <li>
+              <li className='font-medium'>
                 <Link to='/add-job' className='justify-between'>Add Job</Link>
               </li>
-              <li>
+              <li className='font-medium'>
                
                 <Link to='/my-posted-jobs' className='justify-between'>My Posted Jobs</Link>
               </li>
-              <li>
+              <li className='font-medium'>
                
                 <Link to='/my-bids' className='justify-between'>My Bids</Link>
               </li>
-              <li>
+              <li className='font-medium'>
                
                 <Link to='/bid-requests' className='justify-between'>Bid Requests</Link>
               </li>
-              <li className='mt-2'>
+              <li className='mt-2 font-medium'>
                 <button onClick={logOut} className='bg-gray-200 block text-center'>Logout</button>
               </li>
             </ul>
