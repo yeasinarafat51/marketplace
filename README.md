@@ -12,24 +12,24 @@ Currently, two official plugins are available:
 <!-- hhh -->
 #Meraki UI - Components
 
-react-tabs
+#react-tabs
 
-Swiper Slider
+#Swiper Slider
 
-Daisy UI
+#Daisy UI
 
-TailwindCSS
+#TailwindCSS
 
-React Router Dom
+#React Router Dom
 
-Express
+#Express
 
-Firebase
+#Firebase
 
-MongoDB
+#MongoDB
 
-React-Hot-Toast
+#React-Hot-Toast
 
-date-fns
+#date-fns
 
-axios
+#axios
