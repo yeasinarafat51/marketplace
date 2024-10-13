@@ -10,3 +10,26 @@ Currently, two official plugins are available:
 # client:https://marketplace-ten-phi.vercel.app/
 # server:https://market-server-ruby.vercel.app
 <!-- hhh -->
+#Meraki UI - Components
+
+react-tabs
+
+Swiper Slider
+
+Daisy UI
+
+TailwindCSS
+
+React Router Dom
+
+Express
+
+Firebase
+
+MongoDB
+
+React-Hot-Toast
+
+date-fns
+
+axios
